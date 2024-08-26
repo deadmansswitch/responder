@@ -1,0 +1,44 @@
+{
+    "name": "deadmansswitch/responder",
+    "version": "0.1.0",
+    "description": "Responder component for Symfony applications",
+    "type": "symfony-bundle",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Luke Kortunov",
+            "email": "luke@kortunov.me"
+        }
+    ],
+    "require": {
+        "php": "~8.1.0||~8.2.0||~8.3.0",
+        "ext-json": "*",
+        "symfony/dependency-injection": "^6.0|^7.0",
+        "symfony/framework-bundle": "^6.0|^7.0",
+        "symfony/http-foundation": "^6.0|^7.0",
+        "symfony/http-kernel": "^6.0|^7.0",
+        "symfony/serializer": "^6.0|^7.0",
+        "symfony/property-access": "^6.0|^7.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.35",
+        "mockery/mockery": "^1.6",
+        "symfony/uid": "^7.1",
+        "spatie/ray": "^1.41"
+    },
+    "autoload": {
+        "psr-4": {
+            "DeadMansSwitch\\Responder\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DeadMansSwitch\\Responder\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
