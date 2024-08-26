@@ -45,14 +45,7 @@ jobs:
       - name: "Install lower versions of packages for PHP 8.1
         run: | 
           if [[ ${{ matrix.php-version }} == '8.1' ]]; then 
-            composer require \
-              symfony/dependency-injection:^6.0 \
-              symfony/framework-bundle:^6.0 \
-              symfony/http-foundation:^6.0 \
-              symfony/http-kernel:^6.0 \
-              symfony/serializer:^6.0 \
-              symfony/property-access:^6.0 \
-            ;
+            composer require symfony/dependency-injection:^6.0 symfony/framework-bundle:^6.0 symfony/http-foundation:^6.0 symfony/http-kernel:^6.0 symfony/serializer:^6.0 symfony/property-access:^6.0;
           fi
 
       - name: "Run Pest2 test suits"
