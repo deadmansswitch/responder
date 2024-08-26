@@ -42,11 +42,5 @@ jobs:
       - name: "Install dependencies"
         run: composer install --ansi --no-interaction --no-progress
 
-      - name: "Install lower versions of packages for PHP 8.1
-        run: |
-          if [ "${{ matrix.php-version }}" == "8.1" ]; then
-            composer require "symfony/dependency-injection:^6.0";
-          fi
-
       - name: "Run Pest2 test suits"
         run: vendor/bin/pest
