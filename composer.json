@@ -1,6 +1,6 @@
 {
     "name": "deadmansswitch/responder",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "description": "Responder component for Symfony applications",
     "type": "symfony-bundle",
     "license": "proprietary",
