@@ -23,7 +23,7 @@
     "require-dev": {
         "pestphp/pest": "^2.35",
         "mockery/mockery": "^1.6",
-        "symfony/uid": "^7.1",
+        "symfony/uid": "^6.0|^7.0",
         "spatie/ray": "^1.41"
     },
     "autoload": {
