@@ -13,7 +13,7 @@ final class ClassnameHelper
 {
     public static function getFqcnFromSplFileInfo(SplFileInfo $file): ?string
     {
-        $ns = self::extract($file->getRealPath());
+        $ns = self::extractNamespace($file->getRealPath());
         if ($ns === null) {
             return null;
         }
@@ -27,7 +27,7 @@ final class ClassnameHelper
         return $fqcn;
     }
 
-    public static function extract(string $path): ?string
+    public static function extractNamespace(string $path): ?string
     {
         $content = file_get_contents($path);
         $tokens  = token_get_all($content);
