@@ -9,7 +9,7 @@ use ReflectionException;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\Finder\SplFileInfo;
+use DeadMansSwitch\Responder\Util\ClassnameHelper;
 use DeadMansSwitch\Responder\Service\Responder\JsonResponder;
 use DeadMansSwitch\Responder\Service\Responder\ResponderInterface;
 
@@ -31,7 +31,7 @@ final class RespondersCompilerPass implements CompilerPassInterface
         ;
 
         foreach ($files as $file) {
-            $fqcn = $this->getFqcnFromFileInfo($file);
+            $fqcn = ClassnameHelper::getFqcnFromSplFileInfo($file);
             if ($fqcn === null) {
                 continue;
             }
@@ -57,44 +57,5 @@ final class RespondersCompilerPass implements CompilerPassInterface
         }
 
         $container->setParameter('dead_mans_switch.responder.mapping', $mapping);
-    }
-
-    private function getFqcnFromFileInfo(SplFileInfo $file): string|null
-    {
-        $ns = $this->extractNameSpace($file->getRealPath());
-        if ($ns === null) {
-            return null;
-        }
-
-        $name = $file->getBasename('.php');
-        $fqcn = "{$ns}\\{$name}";
-        if (class_exists($fqcn) === false) {
-            return null;
-        }
-
-        return $fqcn;
-    }
-
-    private function extractNameSpace(string $path): ?string
-    {
-        $content = file_get_contents($path);
-        $tokens  = token_get_all($content);
-        $count   = count($tokens);
-
-        for ($i = 0; $i < $count; $i++) {
-            $token = $tokens[$i];
-
-            if (!is_array($token)) {
-                continue;
-            }
-
-            if ($token[0] !== T_NAMESPACE) {
-                continue;
-            }
-
-            return $tokens[$i + 2][1];
-        }
-
-        return null;
     }
 }
