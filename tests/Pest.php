@@ -11,7 +11,9 @@
 |
 */
 
-// uses(Tests\TestCase::class)->in('Feature');
+use DeadMansSwitch\Responder\Tests\TestCase;
+
+uses(TestCase::class)->in(".");
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +26,9 @@
 |
 */
 
-expect()->extend('toBeOne', function () {
-    return $this->toBe(1);
-});
+//expect()->extend('toBeOne', function () {
+//    return $this->toBe(1);
+//});
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
-{
-    // ..
-}
+//function something()
+//{
+//     ..
+//}
