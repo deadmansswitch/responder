@@ -19,6 +19,7 @@ final class DeadMansSwitchResponderExtension extends Extension
             ->register('dead_mans_switch.responder.factory', ResponderFactory::class)
             ->setArgument('$mapping', new Parameter('dead_mans_switch.responder.mapping'))
         ;
+
         $container
             ->setAlias(ResponderFactoryInterface::class, 'dead_mans_switch.responder.factory')
             ->setPublic(true)
@@ -29,6 +30,7 @@ final class DeadMansSwitchResponderExtension extends Extension
             ->setArgument('$customStatusCodes', new Parameter('dead_mans_switch.responder.custom_status_codes'))
             ->setArgument('$defaultStatusCodes', new Parameter('dead_mans_switch.responder.default_status_codes'))
         ;
+
         $container
             ->setAlias(StatusCodeResolverInterface::class, 'dead_mans_switch.responder.status_code_resolver')
             ->setPublic(true)
