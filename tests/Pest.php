@@ -13,7 +13,7 @@
 
 use DeadMansSwitch\Responder\Tests\TestCase;
 
-uses(TestCase::class)->in("*.php");
+uses(TestCase::class)->in(".");
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +26,9 @@ uses(TestCase::class)->in("*.php");
 |
 */
 
-expect()->extend('toBeOne', function () {
-    return $this->toBe(1);
-});
+//expect()->extend('toBeOne', function () {
+//    return $this->toBe(1);
+//});
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
-{
-    // ..
-}
+//function something()
+//{
+//     ..
+//}
