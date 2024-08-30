@@ -11,7 +11,9 @@
 |
 */
 
-// uses(Tests\TestCase::class)->in('Feature');
+use DeadMansSwitch\Responder\Tests\TestCase;
+
+uses(TestCase::class)->in("*.php");
 
 /*
 |--------------------------------------------------------------------------
