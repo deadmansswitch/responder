@@ -3,7 +3,7 @@
     "version": "0.1.4",
     "description": "Responder component for Symfony applications",
     "type": "symfony-bundle",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Luke Kortunov",
