@@ -1,0 +1,9 @@
+# Exclude dev-files from distribution
+/.docker export-ignore
+/.github export-ignore
+/.run export-ignore
+/tests export-ignore
+/.github export-ignore
+/compose.yaml export-ignore
+/Makefile export-ignore
+/phpunit.xml export-ignore
