@@ -1,3 +1,8 @@
+.PHONY: dev
+dev:
+	docker compose up -d && \
+	docker compose exec php composer install
+
 .PHONY: test
 test:
 	./vendor/bin/pest
