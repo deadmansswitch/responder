@@ -228,6 +228,25 @@ test('Nested object will be properly serialized', function () {
             ->toBe(200);
 });
 
+test('Serialized name can be customized', function () {
+    $payload = new class {
+        public string $firstName = 'John';
+        #[\Symfony\Component\Serializer\Attribute\SerializedName('last_name')]
+        public string $lastName = 'Doe';
+    };
+
+    $responder = new JsonResponder();
+    $response  = $responder->respond($payload, 200);
+    $json      = $response->getContent();
+
+    expect($json)
+        ->toBeJson()
+        ->and($json)
+            ->json()
+            ->toHaveKey(key: 'firstName', message: '`firstName` property should be serialized as `firstName` due to default naming strategy')
+            ->toHaveKey(key: 'last_name', message: '`lastName` property should be serialized as `last_name` due to SerializedName attribute applied');
+});
+
 test('Invalid payload will cause SerializationException', function () {
     $data = fopen('php://memory', 'r');
 

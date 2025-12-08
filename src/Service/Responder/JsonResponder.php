@@ -9,6 +9,9 @@ use Exception;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\AcceptHeaderItem;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Symfony\Component\Serializer\Mapping\Loader\AttributeLoader;
+use Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter;
 use Symfony\Component\Serializer\Normalizer\BackedEnumNormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -60,12 +63,16 @@ final class JsonResponder implements ResponderInterface
 
     private function getSerializer(): SerializerInterface
     {
+        $attributeLoader       = new AttributeLoader();
+        $classMetadataFactory  = new ClassMetadataFactory(loader: $attributeLoader);
+        $nameConverter         = new MetadataAwareNameConverter(metadataFactory: $classMetadataFactory);
+
         return new Serializer(
             normalizers: [
                 new UidNormalizer(),
                 new BackedEnumNormalizer(),
                 new DateTimeNormalizer(),
-                new ObjectNormalizer(),
+                new ObjectNormalizer(nameConverter: $nameConverter),
             ],
             encoders: [
                 new JsonEncoder(),
