@@ -1,4 +1,6 @@
-FROM php:8.1-alpine
+ARG PHP_VERSION=8.5
+
+FROM php:${PHP_VERSION}-alpine
 
 # Copy PHP Composer
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
